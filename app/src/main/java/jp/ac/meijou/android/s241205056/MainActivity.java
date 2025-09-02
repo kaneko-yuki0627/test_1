@@ -3,6 +3,7 @@ package jp.ac.meijou.android.s241205056;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -16,6 +17,7 @@ import jp.ac.meijou.android.s241205056.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
+    private PrefDataStore prefDataStore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,19 +31,21 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        prefDataStore = PrefDataStore.getInstance(this);
 
-        //TextView text = findViewById(R.id.text);
-        //text.setText("演習2テスト！");
-        //text.setText(R.string.text1);
-
-        binding.text.setText(R.string.text3);
+        //binding.text.setText(R.string.text3);
 
         binding.button.setOnClickListener(view ->{
             var text = binding.editTextText.getText().toString();
             binding.text.setText(text);
         });
 
-        binding.editTextText.addTextChangedListener(new TextWatcher() {
+        binding.button2.setOnClickListener(view ->{
+            var text = binding.editTextText.getText().toString();
+            prefDataStore.setString("name",text);
+        });
+
+        /*binding.editTextText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 // テキストが更新される直前に呼ばれる
@@ -57,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 // テキストが更新されたあとに呼ばれる
                 binding.text.setText(editable.toString());
             }
-        });
+        });*/
 
     }
 }
