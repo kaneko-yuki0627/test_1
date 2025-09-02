@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">test_1</string>
+    <string name="text">stringから表示テスト</string>
+    <string name="text1">MainActivity</string>
+    <string name="text2">ViewBindingに変更？</string>
+    <string name="text3">ポケモン，けっとばせ！</string>
+    <string name="text4">殺害成功！やったね！</string>
 </resources>
